@@ -72,7 +72,7 @@ In addition to the above annotations, {{{Contracted}}} is also recognized. Class
 TODO: check if this is correct.
 
 Simple case:
-<code>$ jassc <var>YourClass</var>.java<br></code>
+<code>$ jassc YourClass.java</code>
 
 All relevant {{{jassc}}} flags ({{{javac}}} flags are also accepted and passed as is to {{{javac}}}):
 
@@ -87,7 +87,7 @@ All relevant {{{jassc}}} flags ({{{javac}}} flags are also accepted and passed a
 TODO: check if this is still correct.
 
 Simple case:
-{{{$ java -javaagent:$AGENTYourMainClass}}}
+<code>$ java -javaagent:$AGENTYourMainClass</code>
 
 All relevant JVM system properties:
 
