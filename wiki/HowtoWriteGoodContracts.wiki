@@ -134,5 +134,5 @@ The following principles and guidelines are adopted from "Design by Contract, by
 
 ==Other resources==
 
-There is an introductory presentation to Design By Contract on <a href="http://www.eiffel.com</a>eiffel.com</a> that is worth watching.
+There is an introductory presentation to Design By Contract on <a href="http://www.eiffel.com"</a>eiffel.com</a> that is worth watching.
     
