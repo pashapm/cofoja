@@ -1,4 +1,4 @@
-#summary The following explains how you can add contracts to your classes. It is an introduction; if you want a quick overview (or reminder) of the syntax used to write contracts, please refer to the cheat sheet.
+#summary This page explains how you can add contracts to your classes. It is an introduction; if you want a quick overview (or reminder) of the syntax used to write contracts, please refer to the [QuickReference Quick Reference].
 
 
 
