@@ -3,10 +3,10 @@
 = Getting started with contracts for Java =
 
   * [ProjectConfiguration Add support for contracts to your project]
-  * Add contracts to your classes
+  * [AddContracts Add contracts to your classes]
 
 
-  * Quick reference
-  * Fine tune the runtime checking of contracts
-  * How to write good contracts
-  * Frequently asked questions
+  * [QuickReference Quick reference]
+  * [RuntimeCheckingOptions Fine tune the runtime checking of contracts]
+  * [HowtoWriteGoodContracts How to write good contracts]
+  * [FAQ Frequently asked questions]
