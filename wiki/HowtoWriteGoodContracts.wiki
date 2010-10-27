@@ -101,36 +101,38 @@ class NameQueryingDialog {
 }
 </code>
 
-There are plenty of contracted classes in Contracts for Java that you can look at to get a feeling for how to write good contracts (//third_party/java_src/cofoja/java/com/google/java/contract/core/). Also feel free to ask questions on design-by-contract@google.com
-Principles & Guidelines
+There are plenty of contracted classes in Contracts for Java that you can look at to get a feeling for how to write good contracts.
 
 The following principles and guidelines are adopted from "Design by Contract, by Example", Richard Mitchell and Jim McKim. It is an excellent book on how to write contracts. There is a sample chapter online that might help you understand the below principles better.Thanks to Benjamin Manes for reminding us about it.
-Principles
 
-Separate methods into commands and queries.
-A query is a method that returns something (i.e. non-void). It should be used to ask the object a question and asking a question. Since asking a question twice should not change its answer queries should not change the visible properties of its object. 
-A command is a method that returns nothing (i.e. void).
-Following this principle is important because it allows you to use queries in assertions without fearing that they might change state.
-Separate basic queries from derived queries.
-Derived queries can be specified in terms of basic queries.
-For each derived query, write a postcondition that specifies what result will be returned in terms of one or more basic queries.
-Then, if we know the values of the basic queries, we also know the value of the derived queries.
-For every query and command, decide on a suitable precondition.
-Preconditions constrain when clients may call the queries and commands.
-Write invariants to define unchanging properties of objects.
-Concentrate on properties that help the reader build an appropriate conceptual model of the abstraction that the class embodies.
-For each command, write a postcondition that specifies the value of every basic query.
-Taken together with the principle of defining derived queries in terms of basic queries, this means that we now know the total visible effect of every command.
-(In general it is difficult to specify what doesn't change. Following this recommendation leads to very verbose post-conditions. Apply as you see fit.)
-Guidelines
+==Principles==
 
-Add physical constraints where appropriate.
-Typically, these will be constraints that variables should not be null.
-Make sure that queries used in preconditions are cheap to calculate.
-If necessary, add cheap-to-calculate derived queries whose post-conditions verify them against more expensive queries.
-Constrain fields using an invariant
-When a derived query is implemented as an field, it can be constrained to be consistent with other queries by an assertion in the class's invariant section.
-Other resources
+  * Separate methods into commands and queries.
+    * A query is a method that returns something (i.e. non-void). It should be used to ask the object a question and asking a question. Since asking a question twice should not change its answer queries should not change the visible properties of its object. 
+    * A command is a method that returns nothing (i.e. void).
+    * Following this principle is important because it allows you to use queries in assertions without fearing that they might change state.
+  * Separate basic queries from derived queries.
+    * Derived queries can be specified in terms of basic queries.
+  * For each derived query, write a postcondition that specifies what result will be returned in terms of one or more basic queries.
+    * Then, if we know the values of the basic queries, we also know the value of the derived queries.
+  * For every query and command, decide on a suitable precondition.
+    * Preconditions constrain when clients may call the queries and commands.
+  * Write invariants to define unchanging properties of objects.
+    * Concentrate on properties that help the reader build an appropriate conceptual model of the abstraction that the class embodies.
+  * For each command, write a postcondition that specifies the value of every basic query.
+    * Taken together with the principle of defining derived queries in terms of basic queries, this means that we now know the total visible effect of every command.
+    * (In general it is difficult to specify what doesn't change. Following this recommendation leads to very verbose post-conditions. Apply as you see fit.)
 
-There is an introductory presentation to Design By Contract on eiffel.com that is worth watching.
+==Guidelines==
+
+  * Add physical constraints where appropriate.
+    * Typically, these will be constraints that variables should not be null.
+  * Make sure that queries used in preconditions are cheap to calculate.
+    * If necessary, add cheap-to-calculate derived queries whose post-conditions verify them against more expensive queries.
+  * Constrain fields using an invariant
+    * When a derived query is implemented as an field, it can be constrained to be consistent with other queries by an assertion in the class's invariant section.
+
+==Other resources==
+
+There is an introductory presentation to Design By Contract on <a href="http://www.eiffel.com</a>eiffel.com</a> that is worth watching.
     
