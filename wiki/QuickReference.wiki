@@ -1,0 +1,56 @@
+#summary A quick reference for !CoFoJa
+
+=Basic syntax=
+
+==Simple contract:==
+<code>
+@ContractAnnotation("expression")
+ContractedDeclaration
+...
+Multi-clause contract:
+
+@ContractAnnotation({
+  "expression1",
+  "expression2",
+  ...
+})
+ContractedDeclaration
+...
+</code>
+
+==Exceptional postcondition:==
+<code>
+@ThrowEnsures({
+  "ExceptionType1", "expression1",
+  "ExceptionType2", "expression2",
+  ...
+})
+ContractedDeclaration
+...
+</code>
+
+==Example:==
+<code>
+import com.google.java.contract.*;
+
+@Invariant({
+  "class invariant 1",
+  "class invariant 2"
+})
+class MyClass {
+  @Requires("method precondition")
+  @Ensures("method postcondition")
+  SomeType someMethod(...) {
+    ...
+  }
+
+  @Requires({
+    "multi-clause",
+    "precondition"
+  })
+  @ThrowEnsures({ "SomeException", "exceptional postcondition" })
+  AnotherType anotherMethod(...) {
+    ...
+  }
+}
+</code>
