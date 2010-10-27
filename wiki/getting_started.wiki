@@ -2,12 +2,12 @@
 
 = Getting started with contracts for Java =
 
-  * 
+  * Adding support for contracts to your project
+  * Adding contracts to your classes
 
 
-= Details =
+  * Quick reference
+  * Fine tuning the runtime checking of contracts
+  * How to write good contracts
+  * Frequently asked questions
 
-Add your content here.  Format your content with:
-  * Text in *bold* or _italic_
-  * Headings, paragraphs, and lists
-  * Automatic links to other wiki pages
