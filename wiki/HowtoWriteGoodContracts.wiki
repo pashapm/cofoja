@@ -7,7 +7,7 @@ Contracts state assumptions that must hold for your software to run correctly. T
 Let's take a stack class as an example. How should its contract look like? Should you put a precondition on 'pop' that forbids its invocation if the stack is empty? Well that depends. In the end it is a design question. Ask yourself: should clients be allowed to call 'pop' on an empty stack?  You can use contracts to make the answer to this question explicit. If you decide that clients must not call 'pop' on an empty stack the stack class might look a bit like this one:
 
 <code>
-class ConservativeStack<T> {
+class !ConservativeStack<T> {
   public boolean isEmpty() { ... }
 
   @Requires("!isEmpty()")
@@ -18,7 +18,7 @@ class ConservativeStack<T> {
 If you decide that clients may call 'pop' on an empty stack and 'pop' should return 'null' the stack class might look like this instead:
 
 <code>
-class LiberalStack<T> {
+class !LiberalStack<T> {
   public boolean isEmpty() {...}
 
   @Ensures("isEmpty() => result == null")
@@ -29,10 +29,10 @@ class LiberalStack<T> {
 If clients may call 'pop' on an empty stack, but 'pop' should throw an exception the stack class might look like this:
 
 <code>
-class LiberalStack<T> {
+class !LiberalStack<T> {
   public boolean isEmpty() {...}
 
-  @ThrowEnsures({"SomeException", "isEmpty()"})
+  @!ThrowEnsures({"!SomeException", "isEmpty()"})
   public T pop() { ... }
 }
 </code>
@@ -40,10 +40,10 @@ class LiberalStack<T> {
 Note that a client of class 'ConservativeStack' must not call 'pop' on an empty stack. The behavior of 'pop' on an empty 'ConservativeStack' is undefined in general. Only when you enable runtime checking of contracts you get defined behavior. But you must not rely on this, since for runtime checking usually is disabled in for production binaries. Don't write code like this:
 
 <code>
-ConservativeStack s = ...
+!ConservativeStack s = ...
 try {
     s.pop();
-} catch (PreconditionError e) {
+} catch (!PreconditionError e) {
     // Do stuff in case the stack is empty.
 }
 </code>
@@ -51,7 +51,7 @@ try {
 Instead write:
 
 <code>
-ConservativeStack s = ...
+!ConservativeStack s = ...
 if (s.isEmpty()) {
     // Do stuff in case the stack is empty.
 } else {
@@ -84,7 +84,7 @@ class Person {
   public void setName(String newName) {...}
 }
 
-class NameQueryingDialog {
+class !NameQueryingDialog {
   ...
 
   // Below method is registered as a callback with the GUI toolkit. Whenever
