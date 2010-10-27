@@ -87,7 +87,7 @@ All relevant {{{jassc}}} flags ({{{javac}}} flags are also accepted and passed a
 TODO: check if this is still correct.
 
 Simple case:
-<code>$ java -javaagent:$AGENTYourMainClass</code>
+<code>$ java -javaagent:$AGENT YourMainClass</code>
 
 All relevant JVM system properties:
 
