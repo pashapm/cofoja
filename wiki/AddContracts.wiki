@@ -22,7 +22,7 @@ interface Stack<T> {
 }
 </code>
 
-In Java, int is a signed integer type, but it is pretty obvious that a stack can never have a negative number of elements: let's write that as our first contract! Since it is a contract on the state of the object that always holds, it should be a class invariant; class invariants are denoted by the com.google.java.contract.Invariant annotation.
+In Java, {{{int}}} is a signed integer type, but it is pretty obvious that a stack can never have a negative number of elements: let's write that as our first contract! Since it is a contract on the state of the object that always holds, it should be a class invariant; class invariants are denoted by the {{{com.google.java.contract.Invariant}}} annotation.
 
 <code>
 import com.google.java.contract.Invariant;
@@ -74,9 +74,9 @@ interface Stack<T> {
 }
 </code>
 
-This iteration actually introduces two new elements: the Ensures annotation and the Old pseudo-method construct. The Ensures annotation simply delimits the postcondition, as we have seen before with Requires and Invariant. The old pseudo-method call inside the postcondition expression is one of the few extensions to the Java syntax supported by our framework.
+This iteration introduces two new elements: the {{{Ensures}}} annotation and the {{{old}}} keyword. The {{{Ensures}}} annotation simply delimits the postcondition, as we have seen before with {{{Requires}}} and {{{Invariant}}}. The {{{old}}} keyword inside the postcondition expression is one of the few extensions to the Java syntax supported by our framework.
 
-old lets you examine old values, that is, values of expressions as they were prior to the invocation of the method. A call to this pseudo-method returns the value of its expression argument as it were before the execution of the current method.
+The keyword {{{old}}} lets you examine old values, that is, values of expressions as they were prior to the invocation of the method. A call to this pseudo-method returns the value of its expression argument as it were before the execution of the current method.
 
 This is about as far as we go, though, with only the size of the stack as a retrievable information. With only this description, a simple counter would be able to fool our contracts. But since the purpose of design by contract is not complete specification of your programs, you might or might not want to stop here, or even at one of the steps before. For the purpose of demonstrating more features of our cool framework, though, let's add another query method. :-)
 
@@ -102,7 +102,7 @@ interface Stack<T> {
   public void push(T obj);
 }
 </code>
-Using peek, we can establish that an object popped from the stack must be the same as the one which was previously on top and, similarly, that an object just pushed onto the stack is the new topmost element. Our interface becomes:
+Using {{{peek}}}, we can establish that an object popped from the stack must be the same as the one which was previously on top and, similarly, that an object just pushed onto the stack is the new topmost element. Our interface becomes:
 
 <code>
 import com.google.java.contract.Ensures;
@@ -176,11 +176,11 @@ public class ArrayListStack<T> implements Stack<T> {
 }
 </code>
 
-This class has nearly no contracts of its own, but inherits all contracts from the Stack interface it implements. A contracted type inherits all the contracts from all its parents (superclasses and implemented interfaces).
+This class has nearly no contracts of its own, but inherits all contracts from the {{{Stack}}} interface it implements. A contracted type inherits all the contracts from all its parents (superclasses and implemented interfaces).
 
 Contract inheritance lets you share and mix contracts. It can be seen as an extension to the interface mechanism (though it works on superclasses too) of the core Java language, adding arbitrary assertions to their specification power.
 
-Furthermore, contracts can be refined. If we go back to our example, we can see that an invariant and a postcondition have been added. Contrary to method overriding, these new contracts do not replace the ones inherited through Stack. Instead, they are combined according to the following table:
+Furthermore, contracts can be refined. If we go back to our example, we can see that an invariant and a postcondition have been added. Contrary to method overriding, these new contracts do not replace the ones inherited through {{{Stack}}}. Instead, they are combined according to the following table:
 
 ||Contract type	||Combination||
 ||Invariants	||anded||
