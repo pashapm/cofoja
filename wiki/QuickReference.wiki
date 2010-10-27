@@ -92,7 +92,6 @@ Simple case:
 All relevant JVM system properties:
 
 ||Property||Type||Effect||
-||{{{com.google.java.contract.configurator=ConfiguratorClass}}}||String (class name)||Calls {{{configure(ContractEnvironment)}}} on a new instance of {{{ConfiguratorClass}}} before   instrumentation. {{{ConfiguratorClass}}} must be a class name suitable for {{{Class.forName(String)}}}.|||
-||{{{com.google.java.contract.dump=$DUMP_DIRECTORY}}}||String||Dumps instrumented class files
-      into {{{$DUMP_DIRECTORY}}}||
+||{{{com.google.java.contract.configurator=ConfiguratorClass}}}||String (class name)||Calls {{{configure(ContractEnvironment)}}} on a new instance of {{{ConfiguratorClass}}} before   instrumentation. {{{ConfiguratorClass}}} must be a class name suitable for {{{Class.forName(String)}}}.||
+||{{{com.google.java.contract.dump=$DUMP_DIRECTORY}}}|| String || Dumps instrumented class files into {{{$DUMP_DIRECTORY}}} ||
 ||{{{com.google.java.contract.log.contract=true}}}||Boolean||Prints a trace of evaluated contracts to standard error. The contracts need to have been compiled with {{{-Acom.google.java.contract.debug}}}||
