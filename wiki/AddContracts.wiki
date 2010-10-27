@@ -1,6 +1,4 @@
-#summary This page explains how you can add contracts to your classes. It is an introduction; if you want a quick overview (or reminder) of the syntax used to write contracts, please refer to the [QuickReference Quick Reference].
-
-
+#summary This page explains how you can add contracts to your classes. It is an introduction; if you want a quick overview (or reminder) of the syntax used to write contracts, please refer to the Quick Reference.
 
 Before you can add contracts to your classes you must first enable contracts in your BUILD files.
 
