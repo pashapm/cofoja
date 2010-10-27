@@ -56,87 +56,25 @@ class !MyClass {
 </code>
 
 
-<h2>Contract annotations</h2>
+=Contract annotations=
 
-<table>
-  
-<tbody>
-<tr>
-    
-<th>Contract type</th>
-    
-<th>Annotation<br>
-com.google.java.contract.*</th>
-    
-<th>Checked on</th>
-    
-<th>Inheritance</th>
-  </tr>
-  
-<tr>
-    
-<td>Invariants</td>
-    
-<td><code>Invariant</code></td>
-    
-<td>Entry and exit of normal public and package-private methods;
-      exit of constructors.</td>
-    
-<td><i>and</i>ed</td>
-  </tr>
-  
-<tr>
-    
-<td>Preconditions</td>
-    
-<td><code>Requires</code></td>
-    
-<td>Entry of method.</td>
-    
-<td><i>or</i>ed</td>
-  </tr>
-  
-<tr>
-    
-<td>Postconditions</td>
-    
-<td><code>Ensures</code></td>
-    
-<td>Normal exit of method.</td>
-    
-<td><i>and</i>ed</td>
-  </tr>
-  
-<tr>
-    
-<td>Exceptional postconditions</td>
-    
-<td><code>ThrowEnsures</code></td>
-    
-<td>Exceptional exit of method.</td>
-    
-<td><i>and</i>ed</td>
-  </tr>
-</tbody>
-</table>
+||Contract type||Annotation ({{{com.google.java.contract.*}}})||Checked on||Inheritance||
+||Invariants||{{{Invariant}}}||Entry and exit of normal public and package-private methods; exit of constructors.||_and_-ed||
+||Preconditions||{{{Requires}}}||Entry of method||_or_-ed||
+||Postconditions||{{{Ensures}}}||Normal exit of method||_and_ed||
+||Exceptional postconditions||{{{ThrowEnsures}}}||Abnormal termination of method (when an exception has been thrown||_and_-ed||    
 
-<p>In addition to the above
-  annotations, <code>Contracted</code> is also
-  recognized. Classes that inherit contracts without specifying any
-  contracts themselves directly need to be marked with this annotation
-  for the contract compiler to see them. This is a limitation of the
-  way annotation processing is done.</p>
+In addition to the above annotations, {{{Contracted}}} is also recognized. Classes that inherit contracts without specifying any contracts themselves directly need to be marked with this annotation for the contract compiler to see them. This is a limitation of the way annotation processing is done.
 
 
-<h2>Contract compilation (annotation processor)</h2>
+==Contract compilation (annotation processor)==
 
-<p><i>This assumes you have <code>contract_agent_deploy.jar</code>
-    in your classpath.</i></p>
+TODO: check if this is correct.
 
-<p>Simple case:</p>
+Simple case:
 <pre><code>$ jassc <var>YourClass</var>.java<br></code></pre>
 
-<p>All relevant <code>jassc</code> flags (<code>javac</code> flags are also accepted and passed as is to <code>javac</code>):</p>
+All relevant {{{jassc}}} flags ({{{javac}}} flags are also accepted and passed as is to {{{javac}}}):
 <table>
   
 <tbody>
