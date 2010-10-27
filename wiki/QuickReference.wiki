@@ -54,3 +54,182 @@ class !MyClass {
   }
 }
 </code>
+
+
+<h2>Contract annotations</h2>
+
+<table>
+  
+<tbody>
+<tr>
+    
+<th>Contract type</th>
+    
+<th>Annotation<br>
+com.google.java.contract.*</th>
+    
+<th>Checked on</th>
+    
+<th>Inheritance</th>
+  </tr>
+  
+<tr>
+    
+<td>Invariants</td>
+    
+<td><code>Invariant</code></td>
+    
+<td>Entry and exit of normal public and package-private methods;
+      exit of constructors.</td>
+    
+<td><i>and</i>ed</td>
+  </tr>
+  
+<tr>
+    
+<td>Preconditions</td>
+    
+<td><code>Requires</code></td>
+    
+<td>Entry of method.</td>
+    
+<td><i>or</i>ed</td>
+  </tr>
+  
+<tr>
+    
+<td>Postconditions</td>
+    
+<td><code>Ensures</code></td>
+    
+<td>Normal exit of method.</td>
+    
+<td><i>and</i>ed</td>
+  </tr>
+  
+<tr>
+    
+<td>Exceptional postconditions</td>
+    
+<td><code>ThrowEnsures</code></td>
+    
+<td>Exceptional exit of method.</td>
+    
+<td><i>and</i>ed</td>
+  </tr>
+</tbody>
+</table>
+
+<p>In addition to the above
+  annotations, <code>Contracted</code> is also
+  recognized. Classes that inherit contracts without specifying any
+  contracts themselves directly need to be marked with this annotation
+  for the contract compiler to see them. This is a limitation of the
+  way annotation processing is done.</p>
+
+
+<h2>Contract compilation (annotation processor)</h2>
+
+<p><i>This assumes you have <code>contract_agent_deploy.jar</code>
+    in your classpath.</i></p>
+
+<p>Simple case:</p>
+<pre><code>$ jassc <var>YourClass</var>.java<br></code></pre>
+
+<p>All relevant <code>jassc</code> flags (<code>javac</code> flags are also accepted and passed as is to <code>javac</code>):</p>
+<table>
+  
+<tbody>
+<tr>
+    
+<th style="width:396px;height:20px">Flag</th>
+    
+<th style="width:689px;height:20px">Effect</th>
+  </tr>
+  
+<tr>
+    
+<td style="width:396px;height:40px"><code>-g:contracts<br>
+</code>or<code> -Acom.google.java.contract.debug<br>
+</code></td>
+    
+<td style="width:689px;height:40px">Enables compilation of run-time contract tracing code. <code>-g:contracts</code> is only available to <code>jassc</code>. <br>
+</td>
+  </tr>
+  
+<tr>
+    
+<td style="width:396px;height:40px"><code>-Acom.google.java.contract.dump<b>[</b>=<var>$DUMP_DIRECTORY</var><b>]</b></code></td>
+    
+<td style="width:689px;height:40px">Dumps the generated Java source of contract implementation
+      files into <var>$DUMP_DIRECTORY</var> (defaults
+      to <code>modern_jass.out</code>).</td>
+  </tr>
+  
+<tr>
+    
+<td style="width:396px;height:20px"><code>-proc:only</code></td>
+    
+<td style="width:689px;height:20px">Generates contract (<code>.contracts</code>) and helper
+      (<code>$com$google$java$contract$H.class</code>) class files only.</td>
+  </tr>
+</tbody>
+</table>
+
+
+<h2>Contract checking (Java agent)</h2>
+
+<p><i>This assumes you have <code>contract_agent_deploy.jar</code>
+    in your classpath.</i></p>
+
+<p>Simple case:</p>
+<pre><code>$ java -javaagent:<var>$AGENT</var> <var>YourMainClass</var>
+</code></pre>
+
+<p>All relevant JVM system properties:</p>
+<table>
+  
+<tbody>
+<tr>
+    
+<th style="width:446px;height:20px">Property</th>
+    
+<th style="width:52px;height:20px">Type</th>
+    
+<th style="width:583px;height:20px">Effect</th>
+  </tr>
+  
+<tr>
+    
+<td style="width:446px;height:60px"><code>com.google.java.contract.configurator=<var>ConfiguratorClass</var></code></td>
+    
+<td style="width:52px;height:60px">String (class name)</td>
+    
+<td style="width:583px;height:60px">Calls <code>configure(ContractEnvironment)</code> on a new
+      instance of <var>ConfiguratorClass</var> before
+      instrumentation. <var>ConfiguratorClass</var> must be a class
+      name suitable for <code>Class.forName(String)</code>.</td>
+  </tr>
+  
+<tr>
+    
+<td style="width:446px;height:20px"><code>com.google.java.contract.dump=<var>$DUMP_DIRECTORY</var></code></td>
+    
+<td style="width:52px;height:20px">String</td>
+    
+<td style="width:583px;height:20px">Dumps instrumented class files
+      into <var>$DUMP_DIRECTORY</var>.</td>
+  </tr>
+  
+<tr>
+    
+<td style="width:446px;height:40px"><code>com.google.java.contract.log.contract=true</code></td>
+    
+<td style="width:52px;height:40px">Boolean</td>
+    
+<td style="width:583px;height:40px">Prints a trace of evaluated contracts to standard error. The
+      contracts need to have been compiled
+      with <code>-Acom.google.java.contract.debug</code>.</td>
+  </tr>
+</tbody>
+</table>
