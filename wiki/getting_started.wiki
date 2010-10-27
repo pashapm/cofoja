@@ -2,7 +2,7 @@
 
 = Getting started with contracts for Java =
 
-  * Add support for contracts to your project
+  * [ProjectConfiguration Add support for contracts to your project]
   * Add contracts to your classes
 
 
