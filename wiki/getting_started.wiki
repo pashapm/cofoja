@@ -2,12 +2,11 @@
 
 = Getting started with contracts for Java =
 
-  * Adding support for contracts to your project
-  * Adding contracts to your classes
+  * Add support for contracts to your project
+  * Add contracts to your classes
 
 
   * Quick reference
-  * Fine tuning the runtime checking of contracts
+  * Fine tune the runtime checking of contracts
   * How to write good contracts
   * Frequently asked questions
-
