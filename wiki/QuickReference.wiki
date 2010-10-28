@@ -5,27 +5,27 @@
 ==Simple contract:==
 <code>
 @!ContractAnnotation("expression")
-!ContractedDeclaration
+ContractedDeclaration
 ...
 Multi-clause contract:
 
-@!ContractAnnotation({
+@ContractAnnotation({
   "expression1",
   "expression2",
   ...
 })
-!ContractedDeclaration
+ContractedDeclaration
 ...
 </code>
 
 ==Exceptional postcondition:==
 <code>
-@!ThrowEnsures({
-  "!ExceptionType1", "expression1",
-  "!ExceptionType2", "expression2",
+@ThrowEnsures({
+  "ExceptionType1", "expression1",
+  "ExceptionType2", "expression2",
   ...
 })
-!ContractedDeclaration
+ContractedDeclaration
 ...
 </code>
 
@@ -37,10 +37,10 @@ import com.google.java.contract.*;
   "class invariant 1",
   "class invariant 2"
 })
-class !MyClass {
+class MyClass {
   @Requires("method precondition")
   @Ensures("method postcondition")
-  !SomeType someMethod(...) {
+  SomeType someMethod(...) {
     ...
   }
 
@@ -48,8 +48,8 @@ class !MyClass {
     "multi-clause",
     "precondition"
   })
-  @!ThrowEnsures({ "!SomeException", "exceptional postcondition" })
-  !AnotherType anotherMethod(...) {
+  @ThrowEnsures({ "SomeException", "exceptional postcondition" })
+  AnotherType anotherMethod(...) {
     ...
   }
 }
