@@ -3,10 +3,10 @@
 ==How is this better than using assert?==
     Contracts are inherited from superclasses and interfaces.
     Inherited contracts can be extended, but only within the limits imposed by the superclass -- as in the Liskov substitution principle.
-    @Ensures can use the 'old' keyword to refer to the state at the start of the method, e.g. @Ensures("size() == old(size()) + 1").
-    All contracts can use the '=>' operator for 'implies', e.g. @Requires("foo != null => foo.size() > 0").
-    @Invariant adds checks to every public method.
-    @ThrowEnsures adds checks about conditions when an exception is thrown.
+    {{{@Ensures}}} can use the {{{old}}} keyword to refer to the state at the start of the method, e.g. {{{@Ensures("size() == old(size()) + 1")}}}.
+    All contracts can use the {{{=>}}} operator for 'implies', e.g. {{{@Requires("foo != null => foo.size() > 0")}}}.
+    {{{@Invariant}}} adds checks to every public method.
+    {{{@ThrowEnsures}}} adds checks about conditions when an exception is thrown.
     Disabled by default -- so you can and should write expensive checks. Can be enabled all at once or selectively, i.e. just for a particular library or group of libraries.
     Clean separation of assumptions and guarantees from the actual method code. The annotations become part of the javadoc.
 
