@@ -81,7 +81,7 @@ All relevant `javac` flags:
 
 || *Flag* || *Effect* ||
 || `-Acom.google.java.contract.debug` || Enables compilation of run-time contract checking. `-g:contracts` is only available to `jassc`. ||
-|| `-Acom.google.java.contract.dump[=$DUMP_DIRECTORY]` || Dumps the generated Java source of contract implementation files into `$DUMP_DIRECTORY` (defaults to `modern_jass.out`). ||
+|| `-Acom.google.java.contract.dump[=$DUMP_DIRECTORY]` || Dumps the generated Java source of contract implementation files into `$DUMP_DIRECTORY` (defaults to `contracts_for_java.out`). ||
 || `-proc:only` || Generates contract (`.contracts`) and helper (`$com$google$java$contract$H.class`) class files only. ||
 
 ==Contract checking (Java agent)==
