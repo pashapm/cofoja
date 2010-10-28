@@ -1,4 +1,4 @@
-#summary A quick reference for CoFoJa
+#summary A quick reference for Cofoja
 
 =Basic syntax=
 
