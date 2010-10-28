@@ -4,7 +4,7 @@
 
 ==Simple contract:==
 {{{
-@!ContractAnnotation("expression")
+@ContractAnnotation("expression")
 ContractedDeclaration
 ...
 Multi-clause contract:
