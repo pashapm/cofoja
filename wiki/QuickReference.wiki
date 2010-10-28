@@ -3,7 +3,7 @@
 =Basic syntax=
 
 ==Simple contract:==
-<code>
+{{{
 @!ContractAnnotation("expression")
 ContractedDeclaration
 ...
@@ -16,10 +16,10 @@ Multi-clause contract:
 })
 ContractedDeclaration
 ...
-</code>
+}}}
 
 ==Exceptional postcondition:==
-<code>
+{{{
 @ThrowEnsures({
   "ExceptionType1", "expression1",
   "ExceptionType2", "expression2",
@@ -27,10 +27,10 @@ ContractedDeclaration
 })
 ContractedDeclaration
 ...
-</code>
+}}}
 
 ==Example:==
-<code>
+{{{
 import com.google.java.contract.*;
 
 @Invariant({
@@ -53,18 +53,18 @@ class MyClass {
     ...
   }
 }
-</code>
+}}}
 
 
 =Contract annotations=
 
-||Contract type||Annotation ({{{com.google.java.contract.*}}})||Checked on||Inheritance||
-||Invariants||{{{Invariant}}}||Entry and exit of normal public and package-private methods; exit of constructors.||_and_-ed||
-||Preconditions||{{{Requires}}}||Entry of method||_or_-ed||
-||Postconditions||{{{Ensures}}}||Normal exit of method||_and_ed||
-||Exceptional postconditions||{{{ThrowEnsures}}}||Abnormal termination of method (when an exception has been thrown||_and_-ed||    
+||Contract type||Annotation (`com.google.java.contract.*`)||Checked on||Inheritance||
+||Invariants||`Invariant`||Entry and exit of normal public and package-private methods; exit of constructors.||_and_-ed||
+||Preconditions||`Requires`||Entry of method||_or_-ed||
+||Postconditions||`Ensures`||Normal exit of method||_and_ed||
+||Exceptional postconditions||`ThrowEnsures`||Abnormal termination of method (when an exception has been thrown||_and_-ed||    
 
-In addition to the above annotations, {{{Contracted}}} is also recognized. Classes that inherit contracts without specifying any contracts themselves directly need to be marked with this annotation for the contract compiler to see them. This is a limitation of the way annotation processing is done.
+In addition to the above annotations, `Contracted` is also recognized. Classes that inherit contracts without specifying any contracts themselves directly need to be marked with this annotation for the contract compiler to see them. This is a limitation of the way annotation processing is done.
 
 
 ==Contract compilation (annotation processor)==
@@ -72,26 +72,26 @@ In addition to the above annotations, {{{Contracted}}} is also recognized. Class
 TODO: check if this is correct.
 
 Simple case:
-<code>$ jassc YourClass.java</code>
+{{{$ jassc YourClass.java}}}
 
-All relevant {{{jassc}}} flags ({{{javac}}} flags are also accepted and passed as is to {{{javac}}}):
+All relevant `jassc` flags (`javac` flags are also accepted and passed as is to `javac`):
 
 ||Flag||Effect||
-||{{{-g:contracts}}}|| Enables compilation of run-time contract checking. {{{-g:contracts}}} is only available to {{{jassc}}}.||
-||or {{{-Acom.google.java.contract.debug}}}|| ||
-||{{{-Acom.google.java.contract.dump [=$DUMP_DIRECTORY]}}}|| Dumps the generated Java source of contract implementation files into {{{$DUMP_DIRECTORY}}} (defaults to {{{modern_jass.out}}}).||
-||{{{-proc:only}}}|| Generates contract ({{{.contracts}}}) and helper ({{{$com$google$java$contract$H.class}}}) class files only. ||
+||`-g:contracts`|| Enables compilation of run-time contract checking. `-g:contracts` is only available to `jassc`.||
+||or `-Acom.google.java.contract.debug`|| ||
+||`-Acom.google.java.contract.dump [=$DUMP_DIRECTORY]`|| Dumps the generated Java source of contract implementation files into `$DUMP_DIRECTORY` (defaults to `modern_jass.out`).||
+||`-proc:only`|| Generates contract (`.contracts`) and helper (`$com$google$java$contract$H.class`) class files only. ||
 
 ==Contract checking (Java agent)==
 
 TODO: check if this is still correct.
 
 Simple case:
-<code>$ java -javaagent:$AGENT YourMainClass</code>
+{{{$ java -javaagent:$AGENT YourMainClass}}}
 
 All relevant JVM system properties:
 
 ||Property||Type||Effect||
-||{{{com.google.java.contract.configurator=ConfiguratorClass}}}||String (class name)||Calls {{{configure(ContractEnvironment)}}} on a new instance of {{{ConfiguratorClass}}} before   instrumentation. {{{ConfiguratorClass}}} must be a class name suitable for {{{Class.forName(String)}}}.||
-||{{{com.google.java.contract.dump=$DUMP_DIRECTORY}}}|| String || Dumps instrumented class files into {{{$DUMP_DIRECTORY}}} ||
-||{{{com.google.java.contract.log.contract=true}}}||Boolean||Prints a trace of evaluated contracts to standard error. The contracts need to have been compiled with {{{-Acom.google.java.contract.debug}}}||
+||`com.google.java.contract.configurator=ConfiguratorClass`||String (class name)||Calls `configure(ContractEnvironment)` on a new instance of `ConfiguratorClass` before   instrumentation. `ConfiguratorClass` must be a class name suitable for `Class.forName(String)`.||
+||`com.google.java.contract.dump=$DUMP_DIRECTORY`|| String || Dumps instrumented class files into `$DUMP_DIRECTORY` ||
+||`com.google.java.contract.log.contract=true`||Boolean||Prints a trace of evaluated contracts to standard error. The contracts need to have been compiled with `-Acom.google.java.contract.debug`||
