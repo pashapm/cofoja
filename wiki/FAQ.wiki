@@ -19,7 +19,7 @@
 ==Is there any IDE support yet?==
     Not yet. The eclipse plugin from the !ModernJass sourceforge.net page is obsolete. Let us know if you would like to help! 
 
-==9. What about debugger support?==
+==What about debugger support?==
    Contracts for Java adds standard debugging information, such as source file and line numbers, to contract code. Debugging has been tested under JDB, Eclipse and IntelliJ (using remote debugging); only Eclipse has issues with setting breakpoints on contract annotations (source correspondence and step-by-step debugging works, though).
 
 ==Is the source code of Contracts for Java annotated with contracts? (I.e. are you eating your own dogfood?)==
