@@ -2,13 +2,16 @@
 
 =Basic syntax=
 
-==Simple contract:==
+==Simple contract==
 {{{
 @ContractAnnotation("expression")
 ContractedDeclaration
 ...
-Multi-clause contract:
+}}}
 
+==Multi-clause contract==
+
+{{{
 @ContractAnnotation({
   "expression1",
   "expression2",
@@ -18,7 +21,7 @@ ContractedDeclaration
 ...
 }}}
 
-==Exceptional postcondition:==
+==Exceptional postcondition==
 {{{
 @ThrowEnsures({
   "ExceptionType1", "expression1",
@@ -29,7 +32,7 @@ ContractedDeclaration
 ...
 }}}
 
-==Example:==
+==Example==
 {{{
 import com.google.java.contract.*;
 
@@ -58,7 +61,7 @@ class MyClass {
 
 =Contract annotations=
 
-||Contract type||Annotation (`com.google.java.contract.*`)||Checked on||Inheritance||
+||*Contract type*||*Annotation* (`com.google.java.contract.*`)||*Checked on*||*Inheritance*||
 ||Invariants||`Invariant`||Entry and exit of normal public and package-private methods; exit of constructors.||_and_-ed||
 ||Preconditions||`Requires`||Entry of method||_or_-ed||
 ||Postconditions||`Ensures`||Normal exit of method||_and_ed||
@@ -69,29 +72,28 @@ In addition to the above annotations, `Contracted` is also recognized. Classes t
 
 ==Contract compilation (annotation processor)==
 
-TODO: check if this is correct.
-
 Simple case:
-{{{$ jassc YourClass.java}}}
+{{{
+$ javac -processor com.google.java.contract.core.apt.AnnotationProcessor YourClass.java
+}}}
 
-All relevant `jassc` flags (`javac` flags are also accepted and passed as is to `javac`):
+All relevant `javac` flags:
 
-||Flag||Effect||
-||`-g:contracts`|| Enables compilation of run-time contract checking. `-g:contracts` is only available to `jassc`.||
-||or `-Acom.google.java.contract.debug`|| ||
-||`-Acom.google.java.contract.dump [=$DUMP_DIRECTORY]`|| Dumps the generated Java source of contract implementation files into `$DUMP_DIRECTORY` (defaults to `modern_jass.out`).||
+||*Flag*||*Effect*||
+||`-Acom.google.java.contract.debug`|| Enables compilation of run-time contract checking. `-g:contracts` is only available to `jassc`.||
+||`-Acom.google.java.contract.dump[=$DUMP_DIRECTORY]`|| Dumps the generated Java source of contract implementation files into `$DUMP_DIRECTORY` (defaults to `modern_jass.out`).||
 ||`-proc:only`|| Generates contract (`.contracts`) and helper (`$com$google$java$contract$H.class`) class files only. ||
 
 ==Contract checking (Java agent)==
 
-TODO: check if this is still correct.
-
 Simple case:
-{{{$ java -javaagent:$AGENT YourMainClass}}}
+{{{
+$ java -javaagent:path/to/agent.jar YourMainClass
+}}}
 
 All relevant JVM system properties:
 
-||Property||Type||Effect||
+||*Property*||*Type*||*Effect*||
 ||`com.google.java.contract.configurator=ConfiguratorClass`||String (class name)||Calls `configure(ContractEnvironment)` on a new instance of `ConfiguratorClass` before   instrumentation. `ConfiguratorClass` must be a class name suitable for `Class.forName(String)`.||
 ||`com.google.java.contract.dump=$DUMP_DIRECTORY`|| String || Dumps instrumented class files into `$DUMP_DIRECTORY` ||
 ||`com.google.java.contract.log.contract=true`||Boolean||Prints a trace of evaluated contracts to standard error. The contracts need to have been compiled with `-Acom.google.java.contract.debug`||
