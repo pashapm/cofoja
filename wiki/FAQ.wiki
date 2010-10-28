@@ -1,4 +1,4 @@
-#summary Frequently Asked Questions about CoFoJa
+#summary Frequently Asked Questions about Cofoja
 
 ==How is this better than using assert?==
     Contracts are inherited from superclasses and interfaces.
@@ -11,7 +11,7 @@
     Clean separation of assumptions and guarantees from the actual method code. The annotations become part of the javadoc.
 
 ==Is this framework related to '!ModernJass' from Sourceforge.net?==
-    Yes, !CoFoJa is a significant rewrite of !ModernJass. We worked closely with the original author of !ModernJass (Johannes Rieken) on this.
+    Yes, Cofoja is a significant rewrite of !ModernJass. We worked closely with the original author of !ModernJass (Johannes Rieken) on this.
 
 ==Is code annotated with contracts slower than code not annotated?==
     If runtime checking is enabled, yes. If runtime checking is disable the code is as fast as if there were no annotations.
