@@ -72,6 +72,7 @@ The following C style tries to approximate the Google style. Please keep in mind
 		       (knr-argdecl-intro     . 5)
 		       (substatement-open     . +)
 		       (substatement-label    . +)
+		       (case-label            . +)
 		       (label                 . +)
 		       (statement-case-open   . +)
 		       (statement-cont        . ++)
