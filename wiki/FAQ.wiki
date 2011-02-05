@@ -1,5 +1,9 @@
 #summary Frequently Asked Questions about Cofoja
 
+==What do I need in order to use Cofoja?==
+    Cofoja depends on Java 6 or higher for annotation processing and instrumentation support. The ASM package is also required and can be downloaded from: http://asm.ow2.org/ (Cofoja is being developed against version 3.3; any 3.x should work.)
+    Cofoja comes with an Ant script for compilation and a set of JUnit 3 tests.
+
 ==How is this better than using assert?==
     Contracts are inherited from superclasses and interfaces.
     Inherited contracts can be extended, but only within the limits imposed by the superclass -- as in the Liskov substitution principle.
