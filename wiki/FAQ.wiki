@@ -33,4 +33,4 @@
    Contracts for Java adds standard debugging information, such as source file and line numbers, to contract code. Debugging has been tested under JDB, Eclipse and IntelliJ (using remote debugging); only Eclipse has issues with setting breakpoints on contract annotations (source correspondence and step-by-step debugging works, though).
 
 ==Is the source code of Contracts for Java annotated with contracts? (I.e. are you eating your own dogfood?)==
-    Yes, the core of the compiler contains lots of assertions. (Some classes needed at run time cannot be annotated because of technical reasons.)
+    Yes, all the classes in Cofoja that could bear contracts have been contracted; some classes needed at run time cannot be annotated because of technical reasons. New classes are only added to the project with proper contracts.
