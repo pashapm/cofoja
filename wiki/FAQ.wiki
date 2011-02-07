@@ -26,6 +26,9 @@
 ==Is code annotated with contracts slower than code not annotated?==
     If runtime checking is enabled, yes. If runtime checking is disable the code is as fast as if there were no annotations.
 
+==Is the contract code compiled? I only see strings in annotations!==
+    The annotation processor takes care of compiling the strings into bytecode and runs along the Java compiler, so you get static syntax and typing errors at compile time, as usual.
+
 ==Is there any IDE support yet?==
     Not yet. The eclipse plugin from the !ModernJass sourceforge.net page is obsolete. Let us know if you would like to help! 
 
