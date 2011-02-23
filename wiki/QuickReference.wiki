@@ -35,12 +35,22 @@ ContractedDeclaration
 
 ==Postcondition==
 {{{
-@Requires("expression")
+@Ensures("expression")
 ContractedDeclaration
 ...
 }}}
 
-In postconditions refer to the previous state of an expression via {{{old(expression)}}}.
+In postconditions, refer to the state of an expression at method entrance time via {{{old(expression)}}}. For example:
+
+{{{
+@Ensures("i = old(i) + 1")
+void increment() {
+  i = i + 1;
+}
+...
+}}}
+
+
 
 
 ==Exceptional postcondition==
