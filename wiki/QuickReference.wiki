@@ -1,20 +1,53 @@
 #summary A quick reference for Cofoja
 
-=Basic syntax=
+=Syntax=
 
-==Simple contract==
+The following page describes the syntax of contracts.
+
+There are two forms to write contracts. Use the "Simple form" if you only need to specify one expression in an annotation, use the "Multi-clause form" if you need to specify more than one expression in an annotation.
+
+==Simple form==
+
 {{{
 @ContractAnnotation("expression")
 ContractedDeclaration
 ...
 }}}
 
-==Multi-clause contract==
+==Multi-clause form==
 
 {{{
 @ContractAnnotation({
   "expression1",
   "expression2",
+  ...
+})
+ContractedDeclaration
+...
+}}}
+
+==Precondition==
+{{{
+@Requires("expression")
+ContractedDeclaration
+...
+}}}
+
+==Postcondition==
+{{{
+@Requires("expression")
+ContractedDeclaration
+...
+}}}
+
+In postconditions refer to the previous state of an expression via {{{old(expression)}}}.
+
+
+==Exceptional postcondition==
+{{{
+@ThrowEnsures({
+  "ExceptionType1", "expression1",
+  "ExceptionType2", "expression2",
   ...
 })
 ContractedDeclaration
