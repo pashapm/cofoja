@@ -64,17 +64,6 @@ ContractedDeclaration
 ...
 }}}
 
-==Exceptional postcondition==
-{{{
-@ThrowEnsures({
-  "ExceptionType1", "expression1",
-  "ExceptionType2", "expression2",
-  ...
-})
-ContractedDeclaration
-...
-}}}
-
 ==Example==
 {{{
 import com.google.java.contract.*;
