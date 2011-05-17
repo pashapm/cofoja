@@ -109,12 +109,16 @@ Simple case:
 $ javac -processor com.google.java.contract.core.apt.AnnotationProcessor YourClass.java
 }}}
 
-All relevant `javac` flags:
+All relevant annotation processor options (use `-Aoption=value` with `javac`):
 
-|| *Flag* || *Effect* ||
-|| `-Acom.google.java.contract.debug` || Enables compilation of run-time contract checking. `-g:contracts` is only available to `jassc`. ||
-|| `-Acom.google.java.contract.dump[=$DUMP_DIRECTORY]` || Dumps the generated Java source of contract implementation files into `$DUMP_DIRECTORY` (defaults to `contracts_for_java.out`). ||
-|| `-proc:only` || Generates contract (`.contracts`) and helper (`$com$google$java$contract$H.class`) class files only. ||
+|| *Option* || *Value* || *Effect* ||
+|| `com.google.java.contract.classpath` || path || If not invoked from `javac` (e.g. if you use Eclipse), must be set to the full class path used by your project. This option is equivalent to the `-classpath` option for the Java compiler and defaults to the same value when invoked from `javac`. ||
+|| `com.google.java.contract.sourcepath` || path || If not invoked from `javac` (e.g. if you use Eclipse), must be set to the full path to your source directory. This option is equivalent to the `-sourcepath` option for the Java compiler and defaults to the same value when invoked from `javac`. ||
+|| `com.google.java.contract.classoutput` || directory || If not invoked from `javac` (e.g. if you use Eclipse), should be set to the directory where contract files should be written. This option is equivalent to the `-d` option for the Java compiler and defaults to the same value when invoked from `javac`. ||
+|| `com.google.java.contract.debug` || none (flag) || Enables compilation of run-time contract checking. ||
+|| `com.google.java.contract.dump` || directory (optional) || Dumps the generated Java source of contract implementation files into the specified directory (defaults to `contracts_for_java.out`). ||
+
+Additionally, you may want to pass `-proc:only` to `javac`, so it generates only contract (`.contracts`) and helper (`$com$google$java$contract$H.class`) class files. This is recommended for medium-to-large projects.
 
 ==Contract checking (Java agent)==
 
