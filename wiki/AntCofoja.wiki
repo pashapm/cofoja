@@ -12,8 +12,10 @@ Cofoja uses a JSR 269 annotation processor to extract contract information at co
 
 Since cofoja is an annotation processor and it runs before the actual compilation, normal errors that would be catched by the compiler may be reported by cofoja in... cryptic ways.
 Also, as cofoja only processes the subset of your project that effectively uses contracts, some references may be missing during contract compilation.
+Nhat provided a nice explanation of this in Issue 20 (see comment 13).
 
 A good practice that bypasses these issues is compiling contracts in a separate step, right after the normal compilation. For this you can use javac's args proc:none and proc:only.
+Remember to specify different output directories to each task, otherwise ant will not execute the second one.
 
 Example of how to do this:
 
