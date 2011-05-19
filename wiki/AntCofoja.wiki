@@ -1,6 +1,6 @@
 #summary Simple steps to add cofoja to your Ant project.
 
-Ant is a widely used, handy way of managing your project's build process. This page shows how simple steps to integrate Contracts for Java with Ant build files.
+Ant is a widely used, handy way of managing your project's build process. This page shows the basics to integrate Contracts for Java with Ant build files.
 
 == Add cofoja to the classpath ==
 
