@@ -79,7 +79,7 @@ Here's the full Ant buildfile that you can use as base to your project.
 
   <property name="cofoja" value="cofoja.jar"/>
 
-   <path id="classpath">
+   <path id="class.path">
      <pathelement location="${lib.dir}/${cofoja}"/>
    </path>
 
