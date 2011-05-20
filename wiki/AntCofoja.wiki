@@ -85,17 +85,23 @@ Here's the full Ant buildfile that you can use as base to your project.
 
   <target name="build">
     <mkdir dir="${build.dir}"/>
+    
     <!-- Compiles WITHOUT contracts. -->
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${src.dir}" destdir="${classes.dir}">
-      <classpath refid="classpath"/>
+      <classpath refid="class.path"/>
       <compilerarg value="-proc:none"/>
     </javac>
 
     <!-- Compiles ONLY the contracts. -->
     <mkdir dir="${contracts.dir}"/>
     <javac srcdir="${src.dir}" destdir="${contracts.dir}">
-      <classpath refid="classpath"/>
+      <classpath>
+        <path refid="class.path"/>
+        <!-- Add ${classes.dir} to the second compilation class path
+             so that Cofoja finds your already compiled class files. -->
+        <pathelement path="${classes.dir}"/>
+      </classpath>
       <compilerarg value="-proc:only"/>
     </javac>
   </target>
