@@ -14,8 +14,9 @@ Since cofoja is an annotation processor and it runs before the actual compilatio
 Also, as cofoja only processes the subset of your project that effectively uses contracts, some references may be missing during contract compilation.
 Nhat provided a nice explanation of this in Issue 20 (see comment 13).
 
-A good practice that bypasses these issues is compiling contracts in a separate step, right after the normal compilation. For this you can use javac's args proc:none and proc:only.
-Remember to specify different output directories to each task, otherwise ant will not execute the second one.
+A good practice that bypasses these issues is compiling contracts in a _separate step_, right after the normal compilation. For this you can use the javac options `-proc:none` and `-proc:only`. The first pass will produce normal class files while the second pass will yield contracts files; for this to work, you need to include the class files output of the first invocation in the second's class path so Cofoja can find any class from your project.
+
+Also, remember to specify different output directories to each task, otherwise ant will not execute the second one.
 
 Example of how to do this:
 
@@ -26,14 +27,19 @@ Example of how to do this:
     <!-- Compiles WITHOUT contracts. -->
     <mkdir dir="${classes.dir}"/>
     <javac srcdir="${src.dir}" destdir="${classes.dir}">
-      <classpath refid="classpath"/>
+      <classpath refid="class.path"/>
       <compilerarg value="-proc:none"/>
     </javac>
 
     <!-- Compiles ONLY the contracts. -->
     <mkdir dir="${contracts.dir}"/>
     <javac srcdir="${src.dir}" destdir="${contracts.dir}">
-      <classpath refid="classpath"/>
+      <classpath>
+        <path refid="class.path"/>
+        <!-- Add ${classes.dir} to the second compilation class path
+             so that Cofoja finds your already compiled class files. -->
+        <pathelement path="${classes.dir}"/>
+      </classpath>
       <compilerarg value="-proc:only"/>
     </javac>
   </target>
