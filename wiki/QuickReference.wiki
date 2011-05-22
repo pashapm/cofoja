@@ -99,9 +99,6 @@ class MyClass {
 || Postconditions || `Ensures` || Normal exit of method || _and_ed ||
 || Exceptional postconditions || `ThrowEnsures` || Abnormal termination of method (when an exception has been thrown) || _and_-ed ||
 
-In addition to the above annotations, `Contracted` is also recognized. Classes that inherit contracts without specifying any contracts themselves directly need to be marked with this annotation for the contract compiler to see them. This is a limitation of the way annotation processing is done.
-
-
 ==Contract compilation (annotation processor)==
 
 Simple case:
