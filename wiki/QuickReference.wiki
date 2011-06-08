@@ -1,8 +1,23 @@
 #summary A quick reference for Cofoja
 
-=Syntax=
+=Contract annotations=
 
-The following page describes the syntax of contracts.
+Cofoja lets you define four different types of contracts:
+
+|| *Contract type* || *Annotation* (`com.google.java.contract.*`) || *Checked on* || *Inheritance* ||
+|| Invariants || `Invariant` || Entry and exit of normal public and package-private methods; exit of constructors. || _and_-ed ||
+|| Preconditions || `Requires` || Entry of method || _or_-ed ||
+|| Postconditions || `Ensures` || Normal exit of method || _and_ed ||
+|| Exceptional postconditions || `ThrowEnsures` || Abnormal termination of method (when an exception has been thrown) || _and_-ed ||
+
+=Special keywords=
+
+Cofoja introduces two special keywords to help you define your contracts:
+|| *Keyword* || *Use with* || *Example* || *Semantics* ||
+|| `old` || `Ensures`, `ThrowEnsures` || `old(size()) == size() + 1` || Refers to the state of an expression at method entrance time. ||
+|| `result` || `Ensures` || `result != null` || Refers to the method's return. ||
+
+=Syntax=
 
 There are two forms to write contracts. Use the "Simple form" if you only need to specify one expression in an annotation, use the "Multi-clause form" if you need to specify more than one expression in an annotation.
 
@@ -50,9 +65,6 @@ void increment() {
 ...
 }}}
 
-
-
-
 ==Exceptional postcondition==
 {{{
 @ThrowEnsures({
@@ -89,15 +101,6 @@ class MyClass {
   }
 }
 }}}
-
-
-=Contract annotations=
-
-|| *Contract type* || *Annotation* (`com.google.java.contract.*`) || *Checked on* || *Inheritance* ||
-|| Invariants || `Invariant` || Entry and exit of normal public and package-private methods; exit of constructors. || _and_-ed ||
-|| Preconditions || `Requires` || Entry of method || _or_-ed ||
-|| Postconditions || `Ensures` || Normal exit of method || _and_ed ||
-|| Exceptional postconditions || `ThrowEnsures` || Abnormal termination of method (when an exception has been thrown) || _and_-ed ||
 
 ==Contract compilation (annotation processor)==
 
