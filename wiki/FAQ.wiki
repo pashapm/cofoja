@@ -1,4 +1,5 @@
 #summary Frequently Asked Questions about Cofoja
+#labels Featured
 
 ==Are there any pre-packaged JAR files I can download?==
     We now provide official snapshot builds of our development tree, available under the [http://code.google.com/p/cofoja/downloads/list Downloads tab]. However, please note that Cofoja is a very young project so be sure to check back for updates, in order to keep up with the most current changes and bug fixes.
@@ -9,7 +10,7 @@
     (Plain versions come bundled with ASM classes; `-bare` versions only contain Cofoja files. `ccofoja` builds have Cofoja's own contracts turned on.)
 
 ==What do I need in order to use Cofoja?==
-    Cofoja depends on Java 6 or higher for annotation processing and instrumentation support. The ASM package is also required and can be downloaded from: http://asm.ow2.org/ (Cofoja is being developed against version 3.3; any 3.x should work.)
+    Cofoja depends on Java 6 or higher for annotation processing and instrumentation support. The ASM package is also required and can be downloaded from: http://asm.ow2.org/ (Cofoja is being developed against version 3.3; A version higher than 3.2 is required.)
     Cofoja comes with an Ant script for compilation and a set of JUnit 3 tests.
 
 ==How is this better than using assert?==
