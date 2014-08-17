@@ -2,16 +2,10 @@
 #labels Featured
 
 ==Are there any pre-packaged JAR files I can download?==
-    We now provide official snapshot builds of our development tree, available under the [http://code.google.com/p/cofoja/downloads/list Downloads tab]. However, please note that Cofoja is a very young project so be sure to check back for updates, in order to keep up with the most current changes and bug fixes.
-
-    The official builds are bundled with the ASM library and have self-contracts (contracts that we have put on Cofoja's own classes) turned on, to help us track bugs (see below, "are you eating your own dogfood?").
-
-    Alternatively, Nhat maintains a directory with snapshot builds in different flavours, built from his development branch: http://www.huoc.org/~minh/cofoja/
-    (Plain versions come bundled with ASM classes; `-bare` versions only contain Cofoja files. `ccofoja` builds have Cofoja's own contracts turned on.)
+    Pre-built JAR files are available on the [https://github.com/nhatminhle/cofoja/releases GitHub release page].
 
 ==What do I need in order to use Cofoja?==
-    Cofoja depends on Java 6 or higher for annotation processing and instrumentation support. The ASM package is also required and can be downloaded from: http://asm.ow2.org/ (Cofoja is being developed against version 3.3; A version higher than 3.2 is required.)
-    Cofoja comes with an Ant script for compilation and a set of JUnit 3 tests.
+    Java 6 or higher and a recent version of the [http://asm.ow2.org ASM library]. See the [https://github.com/nhatminhle/cofoja#dependencies README.md section on dependencies] for specific versions and instructions.
 
 ==How is this better than using assert?==
   * Contracts are inherited from superclasses and interfaces.
