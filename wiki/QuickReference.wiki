@@ -1,5 +1,8 @@
 #summary A quick reference for Cofoja
-#labels Featured
+
+This information is out of date. Please refer to the [https://github.com/nhatminhle/cofoja#quick-reference README.md] file for a complete and accurate reference.
+
+----
 
 =Contract annotations=
 
