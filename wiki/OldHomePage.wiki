@@ -1,0 +1,65 @@
+#summary The old home page, with links to resources that might be of historical interest.
+
+Contracts for Java enables you to annotate your code with contracts in the form of preconditions, postconditions and invariants.
+
+These contract annotations are 
+
+  * easy to write and read, 
+  * and checked at runtime.
+
+Annotating code with contracts helps you:
+  * design,
+  * document,
+  * test, and
+  * debug
+your programs.
+ 
+
+Here is a simple example of a Java class annotated with contracts:
+{{{
+interface Time {
+  ...
+
+  @Ensures({
+    "result >= 0",
+    "result <= 23"
+  })
+  int getHour();
+
+  @Requires({
+    "h >= 0",
+    "h <= 23"
+  })
+  @Ensures("getHour() == h")
+  void setHour(int h);
+
+  ...
+}
+}}}
+
+
+Here is what the contract for setHour regulates.
+
+
+|| ||Obligation || Benefit ||
+|| Calling method || Satisfy precondition; Make sure 'h' is neither too small nor too large.|| (From postcondition) getHour() returns h.||
+||Called method	|| Satisfy postcondition; Must make getHour() return h.|| (From precondition) May assume h is neither too small nor too large.||
+
+
+
+To use Cofoja you need to do the following two things:
+
+  * [http://code.google.com/p/cofoja/downloads/list Download one of the JARs] (Or grab an [http://www.huoc.org/~minh/cofoja/ unofficial build]; see the [FAQ] for more information)
+  * [http://code.google.com/p/cofoja/source/browse/trunk/README Read the README]
+  * [AddContracts Add contracts to your classes]
+
+
+The following provide more information about Cofoja:
+
+  * [AntCofoja Add support for contracts to your Ant project]
+  * [QuickReference Quick reference]
+  * [RuntimeCheckingOptions Fine tune the runtime checking of contracts]
+  * [HowtoWriteGoodContracts How to write good contracts]
+  * [FAQ Frequently asked questions]
+  * [http://fsteeg.com/2011/02/07/setting-up-contracts-for-java-in-eclipse/ Using Contracts with Eclipse] (external link, thanks to Fabian Steeg)
+  * [http://java.dzone.com/articles/using-google-contracts-java Using Contracts with IntelliJ IDEA] (external link, java.dzone.com)
