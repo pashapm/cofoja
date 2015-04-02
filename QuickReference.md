@@ -1,0 +1,1 @@
+This page is no longer maintained separately. Please refer to the [README.md](https://github.com/nhatminhle/cofoja#quick-reference) file for a complete and accurate reference.
